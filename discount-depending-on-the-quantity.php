@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: free wholesale for wordpress   
+Plugin Name: free wholesale
 Description: FWFW is a plugin for calculate the Discount depending on the quantity
 Tags: wholesale , discount , plugin , free , wordpress , wholesale plugin , wholesale plugin for wordpress , free wholesale plugin , free wholesale plugin for wordpress , woocommerce 
 Author: Abdelhamid Karam
