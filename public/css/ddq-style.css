@@ -1,4 +1,4 @@
-.ddq-field {
+.fwfw-field {
 padding-right: 0.6rem;
 padding-left: 0.6rem;
 padding-bottom: 0.6rem;
@@ -8,18 +8,18 @@ border-radius: 12px;
 background-color: rgb(241, 237, 237);
 
 }
-.ddq-fields-box{
+.fwfw-fields-box{
     display: flex;
     margin-bottom: 1rem;
 }
 
-.ddq-fields-box h5 {
+.fwfw-fields-box h5 {
   margin: 0.6rem;
   margin-left: 0;
   margin-right: 0;
 }
 
-.ddq-total-price{
+.fwfw-total-price{
     display: inline;
     padding: 1rem;
     width: 25%;

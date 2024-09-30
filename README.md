@@ -1,4 +1,13 @@
-# DDQ-Wholesale Pricing and Multiple Price Categories Plugin
+# Wholesale-free Pricing and Multiple Price Categories Plugin
+
+Tags: wholesale , discount , plugin , free , wordpress , wholesale plugin , wholesale plugin for wordpress , free wholesale plugin , free wholesale plugin for wordpress , woocommerce 
+Author: Abdelhamid Karam
+Author URI: https://abdelhamid.dev
+Requires at least: 5.2
+Requires PHP: 5.6.20
+version: 1.0.0
+License: GPLv2
+License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 
 ## Description
 

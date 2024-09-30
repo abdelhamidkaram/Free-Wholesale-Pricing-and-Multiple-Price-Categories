@@ -1,10 +1,10 @@
 <?php
 
-add_action('woocommerce_product_options_general_product_data', 'ddq_add_fields');
+add_action('woocommerce_product_options_general_product_data', 'fwfw_add_fields');
 
-add_action('woocommerce_process_product_meta', 'ddq_save_fields');
+add_action('woocommerce_process_product_meta', 'fwfw_save_fields');
 
-function ddq_add_fields()
+function fwfw_add_fields()
 {
     global $post;
 
@@ -80,28 +80,28 @@ function ddq_add_fields()
         echo '</div>';
     }
 }
-function ddq_save_fields($post_id)
+function fwfw_save_fields($post_id)
 {
-    $ddq_enable = isset($_POST['enable_wholesale']) ? 'yes' : 'no';
-    update_post_meta($post_id, 'enable_wholesale', esc_attr($ddq_enable));
+    $fwfw_enable = isset($_POST['enable_wholesale']) ? 'yes' : 'no';
+    update_post_meta($post_id, 'enable_wholesale', esc_attr($fwfw_enable));
 
     for ($i = 0; $i < 3; $i++) {
 
-        $ddq_enable_single = $_POST['enable_wholesale' . $i + 1];
+        $fwfw_enable_single = $_POST['enable_wholesale' . $i + 1];
         $quantity = $_POST['Wholesale' . $i + 1 . 'quantity'];
         $to_quantity = $_POST['Wholesale' . $i + 1 . 'to_quantity'];
         $price = $_POST['Wholesale' . $i + 1 . 'price'];
-        if ($ddq_enable_single) {
+        if ($fwfw_enable_single) {
             update_post_meta(
                 $post_id,
                 'enable_wholesale' . $i + 1,
-                esc_attr(wc_bool_to_string($ddq_enable_single))
+                esc_attr(wc_bool_to_string($fwfw_enable_single))
             );
         } else {
             update_post_meta(
                 $post_id,
                 'enable_wholesale' . $i + 1,
-                esc_attr(wc_bool_to_string($ddq_enable_single))
+                esc_attr(wc_bool_to_string($fwfw_enable_single))
             );
         }
 

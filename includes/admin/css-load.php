@@ -1,5 +1,5 @@
 <?php 
 add_action( 'admin_enqueue_scripts', 'load_admin_style' );
 function load_admin_style() {
-    wp_enqueue_style('ddq_admin_css', ddq_url(). '/admin/style.css' );
+    wp_enqueue_style('fwfw_admin_css', fwfw_url(). '/admin/style.css' );
 }
