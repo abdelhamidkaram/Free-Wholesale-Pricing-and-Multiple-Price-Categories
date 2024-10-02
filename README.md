@@ -1,17 +1,18 @@
-# Wholesale-free Pricing and Multiple Price Categories Plugin
+# Free Wholesale Pricing and Multiple Price Categories 
 
-Tags: wholesale , discount , plugin , free , wordpress , wholesale plugin , wholesale plugin for wordpress , free wholesale plugin , free wholesale plugin for wordpress , woocommerce 
-Author: Abdelhamid Karam
-Author URI: https://abdelhamid.dev
-Requires at least: 5.2
-Requires PHP: 5.6.20
-version: 1.0.0
-License: GPLv2
-License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+**Contributors**: abdelhamidkaram
+**Tags**: b2b,catalog mode , dynamic pricing, wholesale pricing, woocommerce wholesale  
+**Requires at least**: 5.2  
+**Tested up to**: 6.6  
+**Stable tag**: 1.0.0  
+**License**: GPLv2  
+**License URI**: [GPL-2.0 License](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt)  
+
+Manage wholesale pricing based on quantity in WooCommerce.
 
 ## Description
 
-The Wholesale Pricing and Multiple Price Categories plugin is a powerful extension for your WordPress website that allows store owners to offer wholesale pricing to their customers. With this plugin, you can set up different price categories based on quantities, allowing you to offer tiered pricing for bulk purchases.
+The Wholesale Pricing and Multiple Price Categories plugin is a robust extension designed for your WordPress website, enabling store owners to provide wholesale pricing to their customers. With this plugin, you can easily create multiple price categories based on quantity thresholds, allowing for tiered pricing that caters to bulk purchases.
 
 ## Features
 

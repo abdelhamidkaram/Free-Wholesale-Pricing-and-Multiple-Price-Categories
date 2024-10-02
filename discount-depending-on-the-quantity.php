@@ -1,15 +1,17 @@
 <?php
 /*
-Plugin Name: free wholesale
-Description: FWFW is a plugin for calculate the Discount depending on the quantity
-Tags: wholesale , discount , plugin , free , wordpress , wholesale plugin , wholesale plugin for wordpress , free wholesale plugin , free wholesale plugin for wordpress , woocommerce 
+Plugin Name: Free Wholesale Pricing and Multiple Price Categories 
+Description: The Wholesale Pricing and Multiple Price Categories plugin is a robust extension designed for your WordPress website, enabling store owners to provide wholesale pricing to their customers. With this plugin, you can easily create multiple price categories based on quantity thresholds, allowing for tiered pricing that caters to bulk purchases.
+Short Description: Manage wholesale pricing based on quantity in WooCommerce.
 Author: Abdelhamid Karam
 Author URI: https://abdelhamid.dev
 Requires at least: 5.2
 Requires PHP: 5.6.20
-version: 1.0.0
+Version: 1.0.0
+Tested up to: 6.6
 License: GPLv2
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
+Tags: b2b,catalog mode , dynamic pricing, wholesale pricing, woocommerce wholesale 
 */
 
 if (!defined('fwfw_PLUGIN_FILE')) {
