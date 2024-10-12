@@ -10,6 +10,7 @@ Requires PHP: 5.6.20
 Version: 1.0.0
 Tested up to: 6.6
 License: GPLv2
+Text Domain: free-wholesale-pricing-and-multiple-price-categories
 License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 Tags: b2b,catalog mode , dynamic pricing, wholesale pricing, woocommerce wholesale 
 */
@@ -21,6 +22,18 @@ if (!defined('fwfw_PLUGIN_FILE')) {
 function fwfw_url()
 {
     return untrailingslashit(plugins_url('/', fwfw_PLUGIN_FILE));
+}
+
+//load langs
+add_action('init', 'fwfw_load_textdomain');
+
+function fwfw_load_textdomain()
+{
+    load_plugin_textdomain(
+        domain: 'free-wholesale-pricing-and-multiple-price-categories',
+        deprecated: false,
+        plugin_rel_path: dirname(plugin_basename(__FILE__)) . '/languages/'
+    );
 }
 
 
