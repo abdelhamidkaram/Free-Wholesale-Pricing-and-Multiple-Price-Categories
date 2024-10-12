@@ -1,6 +1,6 @@
 <?php
-add_action('woocommerce_product_options_general_product_data', 'fwfw_add_fields');
-add_action('woocommerce_process_product_meta', 'fwfw_save_fields');
+add_action('woocommerce_product_options_general_product_data', 'fwpampc_add_fields');
+add_action('woocommerce_process_product_meta', 'fwpampc_save_fields');
 /**
  * Add fields for wholesale price.
  *
@@ -10,10 +10,10 @@ add_action('woocommerce_process_product_meta', 'fwfw_save_fields');
  *
  * @since 1.0
  */
-function fwfw_add_fields()
+function fwpampc_add_fields()
 {
     global $post;
-    wp_nonce_field('fwfw_save_fields_action', 'fwfw_save_fields_nonce');
+    wp_nonce_field('fwpampc_save_fields_action', 'fwpampc_save_fields_nonce');
     woocommerce_wp_checkbox([
         'id' => 'enable_wholesale',
         /* translators: %d Placeholder For Enable Wholesale number  */
@@ -69,52 +69,52 @@ function fwfw_add_fields()
     }
 }
 
-function fwfw_save_fields($post_id)
+function fwpampc_save_fields($post_id)
 {
     // Verify the nonce before processing the form
-    if ( ! isset( $_POST['fwfw_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwfw_save_fields_nonce'] ) ), 'fwfw_save_fields_action' ) ) {
+    if ( ! isset( $_POST['fwpampc_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwpampc_save_fields_nonce'] ) ), 'fwpampc_save_fields_action' ) ) {
         wp_die( esc_html__( 'Nonce verification failed', 'free-wholesale-pricing-and-multiple-price-categories' ) );
     }
     
-    $fwfw_enable = isset($_POST['enable_wholesale']) ? 'yes' : 'no';
-    update_post_meta($post_id, 'enable_wholesale', esc_attr($fwfw_enable));
+    $fwpampc_enable = isset($_POST['enable_wholesale']) ? 'yes' : 'no';
+    update_post_meta($post_id, 'enable_wholesale', esc_attr($fwpampc_enable));
 
     for ($i = 0; $i < 3; $i++) {
-        $fwfw_enable_single = isset($_POST['enable_wholesale' . ($i + 1)]) ? sanitize_text_field( wp_unslash( $_POST['enable_wholesale' . ($i + 1)] ) ) : '';
+        $fwpampc_enable_single = isset($_POST['enable_wholesale' . ($i + 1)]) ? sanitize_text_field( wp_unslash( $_POST['enable_wholesale' . ($i + 1)] ) ) : '';
         $quantity = isset($_POST['Wholesale' . ($i + 1) . 'quantity']) ? sanitize_text_field( wp_unslash( $_POST['Wholesale' . ($i + 1) . 'quantity'] ) ) : '';
         $to_quantity = isset($_POST['Wholesale' . ($i + 1) . 'to_quantity']) ? sanitize_text_field( wp_unslash( $_POST['Wholesale' . ($i + 1) . 'to_quantity'] ) ) : '';
         $price = isset($_POST['Wholesale' . ($i + 1) . 'price']) ? sanitize_text_field( wp_unslash( $_POST['Wholesale' . ($i + 1) . 'price'] ) ) : '';
 
-        if ($fwfw_enable_single) {
-            update_post_meta($post_id, 'enable_wholesale' . ($i + 1), esc_attr($fwfw_enable_single));
+        if ($fwpampc_enable_single) {
+            update_post_meta($post_id, 'enable_wholesale' . ($i + 1), esc_attr($fwpampc_enable_single));
         } else {
             update_post_meta($post_id, 'enable_wholesale' . ($i + 1), 'no');
         }
 
         if (!empty($quantity)) {
-            save_quantity($i, $quantity, $to_quantity, $post_id);
+            fwpampc_save_quantity($i, $quantity, $to_quantity, $post_id);
         } else {
-            disable_wholesale($i, $post_id);
+            fwpampc_disable_wholesale($i, $post_id);
         }
 
         if (!empty($to_quantity)) {
-            save_to_quantity($i, $quantity, $to_quantity, $post_id);
+            fwpampc_save_to_quantity($i, $quantity, $to_quantity, $post_id);
         } else {
-            disable_wholesale($i, $post_id);
+            fwpampc_disable_wholesale($i, $post_id);
         }
 
         if (!empty($price)) {
             update_post_meta($post_id, 'Wholesale' . ($i + 1) . 'price', esc_attr($price));
         } else {
-            disable_wholesale($i, $post_id);
+            fwpampc_disable_wholesale($i, $post_id);
         }
     }
 }
 
 
-function save_quantity($i, $quantity, $to_quantity, $post_id) {
+function fwpampc_save_quantity($i, $quantity, $to_quantity, $post_id) {
         // Verify the nonce before processing the form
-        if ( ! isset( $_POST['fwfw_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwfw_save_fields_nonce'] ) ), 'fwfw_save_fields_action' ) ) {
+        if ( ! isset( $_POST['fwpampc_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwpampc_save_fields_nonce'] ) ), 'fwpampc_save_fields_action' ) ) {
             wp_die( esc_html__( 'Nonce verification failed', 'free-wholesale-pricing-and-multiple-price-categories' ) );
         }
     
@@ -131,10 +131,10 @@ function save_quantity($i, $quantity, $to_quantity, $post_id) {
         update_post_meta($post_id, 'Wholesale' . ($i + 1) . 'quantity', esc_attr($to_quantity));
     }
 }
-function save_to_quantity($i, $quantity, $to_quantity, $post_id)
+function fwpampc_save_to_quantity($i, $quantity, $to_quantity, $post_id)
 {
     // Verify the nonce before processing the form
-    if ( ! isset( $_POST['fwfw_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwfw_save_fields_nonce'] ) ), 'fwfw_save_fields_action' ) ) {
+    if ( ! isset( $_POST['fwpampc_save_fields_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['fwpampc_save_fields_nonce'] ) ), 'fwpampc_save_fields_action' ) ) {
         wp_die( esc_html__( 'Nonce verification failed', 'free-wholesale-pricing-and-multiple-price-categories' ) );
     }
     $next_quantity = isset($_POST['Wholesale' . ($i + 2) . 'quantity']) ? sanitize_text_field(wp_unslash($_POST['Wholesale' . ($i + 2) . 'quantity'])) : 99999999999;
@@ -151,7 +151,7 @@ function save_to_quantity($i, $quantity, $to_quantity, $post_id)
     }
 }
 
-function disable_wholesale($i, $post_id)
+function fwpampc_disable_wholesale($i, $post_id)
 {
     update_post_meta($post_id, 'enable_wholesale' . ($i + 1), 'no');
 }

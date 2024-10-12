@@ -15,19 +15,21 @@ License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt
 Tags: b2b,catalog mode , dynamic pricing, wholesale pricing, woocommerce wholesale 
 */
 
-if (!defined('fwfw_PLUGIN_FILE')) {
-    define('fwfw_PLUGIN_FILE', __FILE__);
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+if (!defined('fwpampc_PLUGIN_FILE')) {
+    define('fwpampc_PLUGIN_FILE', __FILE__);
 }
 
-function fwfw_url()
+function fwpampc_url()
 {
-    return untrailingslashit(plugins_url('/', fwfw_PLUGIN_FILE));
+    return untrailingslashit(plugins_url('/', fwpampc_PLUGIN_FILE));
 }
 
 //load langs
-add_action('init', 'fwfw_load_textdomain');
+add_action('init', 'fwpampc_load_textdomain');
 
-function fwfw_load_textdomain()
+function fwpampc_load_textdomain()
 {
     load_plugin_textdomain(
         domain: 'free-wholesale-pricing-and-multiple-price-categories',
